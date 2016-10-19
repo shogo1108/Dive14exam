@@ -1,0 +1,14 @@
+<section class="main-header">
+    <p class="flash"><%= notice %></p>
+    <img src="<%= asset_path "achieve.png" %>">
+</section>
+
+<h2>投稿一覧</h2>
+<%= link_to "ブログを作成する", new_picture_path, class: "btn btn-default" %>
+<% @pictures.each do |picture| %>
+<%= picture.title %>
+<%= picture.content %>
+<%= image_tag(picture.image) %>
+<%= link_to "詳細へ", picture_path(picture.id) %>
+<% end %>
+

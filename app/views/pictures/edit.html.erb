@@ -1,0 +1,11 @@
+<%= form_for(@picture, url: picture_path) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :content %>
+<%= f.text_field :content %>
+<br>
+<%= f.file_field :image %>
+<%= f.hidden_field :image_cache %>
+<%= f.submit "投稿", class:"btn btn-primary btn-block" %>
+<% end %>

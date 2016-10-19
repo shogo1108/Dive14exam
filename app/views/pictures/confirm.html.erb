@@ -1,0 +1,20 @@
+<h3>以下の内容で、投稿する。</h3>
+        <%= form_for(@picture) do |f| %>
+            <%= f.hidden_field :title %>
+            <%= f.hidden_field :content %>
+            <%= f.hidden_field :image %>
+            <%= f.hidden_field :image_cache %>
+            <p>タイトル：<%= @picture.title %></p>
+            <p>本文：<%= @picture.content %></p>
+            <p>写真：<%= image_tag(@picture.image) %></p>
+            <%= f.submit "投稿",class: "btn btn-primary" %>
+        <% end %>
+
+        <%= form_for(@picture, url: new_picture_path, method: 'get') do |f| %>
+            <%= f.hidden_field :title %>
+            <%= f.hidden_field :content %>
+            <%= f.hidden_field :image %>
+            <%= f.hidden_field :image_cache %>
+            <br />
+            <%= f.submit "戻る" , name: "back", class: "btn btn-default" %>
+        <% end %>
