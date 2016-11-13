@@ -1,7 +1,9 @@
-<h3>投稿詳細</h3>
-<%= @picture.title %>
-<%= @picture.content %>
+<div class="show-container">
+<h3>投稿の詳細</h3><br />
+<h4><%= @picture.title %></h4>
+<h5><%= @picture.content %></h5><br />
 <%= image_tag(@picture.image) %>
-<br />
-<%= link_to "修正", edit_picture_path(@picture.id) %>
-<%= link_to "削除", picture_path(@picture.id), method: 'delete', data: {confirm: "本当に削除していいですか？"} %>
+<br /><br />
+<%= link_to "修正", edit_picture_path(@picture.id), class:"btn btn-success" %>
+<%= link_to "削除", picture_path(@picture.id), method: 'delete', data: {confirm: "本当に削除していいですか？"} , class:"btn btn-danger" %>
+</div>

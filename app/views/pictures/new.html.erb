@@ -1,11 +1,14 @@
+<div class="new-form">
 <%= form_for(@picture, url: confirm_pictures_path) do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<br>
-<%= f.label :content %>
-<%= f.text_field :content %>
-<br>
+<%= f.label :title %><br />
+<%= f.text_field :title, class:"title-field" %>
+<br /><br />
+<%= f.label :content %><br />
+<%= f.text_area :content, class:"content-field" %>
+<br />
 <%= f.file_field :image %>
 <%= f.hidden_field :image_cache %>
-<%= f.submit "投稿", class:"btn btn-primary btn-block" %>
+<br />
+<%= f.submit "投稿", class:"btn btn-primary" %>
 <% end %>
+</div>

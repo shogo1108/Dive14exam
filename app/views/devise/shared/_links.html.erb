@@ -19,7 +19,10 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
+    <span class="btn fa fa-facebook"><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></span><br />
+    <span class="btn fa fa-twitter"><%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %></span>
+
+<%#  <%- resource_class.omniauth_providers.each do |provider| %>
+<%#    <span class="btn fa fa-facebook"><%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><%#<br /></span>%>
+<%#  <% end -%>
 <% end -%>
