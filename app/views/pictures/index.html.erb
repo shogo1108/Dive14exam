@@ -1,12 +1,11 @@
 <div class="index-container">
+  <section class="flash-message">
+		<p class="flash"><%= notice %><%= alert %></p>
+	</section>
   
 <div id="page-top-btn" class="page-top-btn">
   <p><a class="move-page-top" id="move-page-top">▲</a></p>
 </div>
-
-<section class="main-header">
-  <p class="flash"><%= notice %></p>
-</section>
 
 <div class="index-form">
 <h3>投稿一覧</h3>
@@ -19,7 +18,9 @@
 <h4><%= picture.title %></h4>
 <h5><%= picture.content %></h5>
 <%= image_tag(picture.image) %><br /><br />
+<% if picture.user.id == current_user.id %>
 <%= link_to "詳細へ", picture_path(picture.id), class:"btn btn-info" %>
+<% end %>
 </div>
 <% end %>
 </div>
