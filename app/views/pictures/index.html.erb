@@ -12,15 +12,20 @@
 <%#<%= link_to "ブログを作成する", new_picture_path, class: "btn btn-default" %>
 <% @pictures.each do |picture| %>
 <div class="index-set">
-<%= picture.created_at %>
-<%= picture.user.name %>が投稿しました。
-<br />
-<h4><%= picture.title %></h4>
-<h5><%= picture.content %></h5>
-<%= image_tag(picture.image) %><br /><br />
-<% if picture.user.id == current_user.id %>
-<%= link_to "詳細へ", picture_path(picture.id), class:"btn btn-info" %>
-<% end %>
+ <div class="index-setuserimage">
+   <%= image_tag(picture.user.avatar) %>
+ </div>
+ <div class="index-setinfomation">
+   <%= picture.user.name %>が投稿しました。
+   <%= picture.created_at %>
+ </div>
+ <br />
+ <h4><%= picture.title %></h4>
+ <h5><%= picture.content %></h5>
+ <%= image_tag(picture.image) %><br /><br />
+ <% if picture.user.id == current_user.id %>
+ <%= link_to "詳細へ", picture_path(picture.id), class:"btn btn-info" %>
+ <% end %>
 </div>
 <% end %>
 </div>

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   has_many :pictures
+  mount_uploader :avatar, ImageUploader
+#  def update_with_password()
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)

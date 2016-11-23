@@ -42,4 +42,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'dive14-exam-shogo1108.c9users.io' }
   config.action_mailer.delivery_method = :letter_opener_web
   
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end
