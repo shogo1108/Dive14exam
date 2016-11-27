@@ -27,7 +27,7 @@
         </div>
         <br />
         <h4><%= picture.title %></h4>
-        <h5><%= picture.content %></h5>
+        <h5><%= simple_format(picture.content) %></h5>
         <div class="index-setimage">
           <%= image_tag(picture.image) %><br /><br />  
         </div> 
