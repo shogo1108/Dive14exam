@@ -34,6 +34,8 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     if @picture.update(pictures_params)
       redirect_to pictures_path, notice: "投稿を更新しました！"
+    elsif @picture.invalid?
+      render :edit
     else
       redirect_to pictures_path, notice: "投稿を更新できませんでした"
     end
