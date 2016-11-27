@@ -1,33 +1,42 @@
 <div class="index-container">
   <section class="flash-message">
-		<p class="flash"><%= notice %><%= alert %></p>
-	</section>
+    <p class="flash"><%= notice %><%= alert %></p>
+  </section>
+  　  
+  <div id="page-top-btn" class="page-top-btn">
+    <p><a class="move-page-top" id="move-page-top">▲</a></p>
+  </div>
+  　
+  <div class="index-form">
+    <h3>投稿一覧</h3>
   
-<div id="page-top-btn" class="page-top-btn">
-  <p><a class="move-page-top" id="move-page-top">▲</a></p>
-</div>
-
-<div class="index-form">
-<h3>投稿一覧</h3>
-<%#<%= link_to "ブログを作成する", new_picture_path, class: "btn btn-default" %>
-<% @pictures.each do |picture| %>
-<div class="index-set">
- <div class="index-setuserimage">
-   <%= image_tag(picture.user.avatar) %>
- </div>
- <div class="index-setinfomation">
-   <%= picture.user.name %>が投稿しました。
-   <%= picture.created_at %>
- </div>
- <br />
- <h4><%= picture.title %></h4>
- <h5><%= picture.content %></h5>
- <%= image_tag(picture.image) %><br /><br />
- <% if picture.user.id == current_user.id %>
- <%= link_to "詳細へ", picture_path(picture.id), class:"btn btn-info" %>
- <% end %>
-</div>
-<% end %>
-</div>
-
+    <% @pictures.each do |picture| %>
+      <div class="index-set">
+        <div class="index-setuserimage">
+          <% if picture.user.avatar? %>
+            <%= image_tag(picture.user.avatar) %>
+          <% elsif picture.user.image_url? %>
+            <%= image_tag(picture.user.image_url) %>
+          <% else %>
+            <%= image_tag('no_img.png') %>
+          <% end %>
+        </div>
+        <div class="index-setinfomation">
+          <%= picture.user.name %>が投稿しました。
+          <%= picture.created_at %>
+        </div>
+        <br />
+        <h4><%= picture.title %></h4>
+        <h5><%= picture.content %></h5>
+        <div class="index-setimage">
+          <%= image_tag(picture.image) %><br /><br />  
+        </div> 
+        <% if picture.user.id == current_user.id %>
+          <%= link_to "詳細へ", picture_path(picture.id), class:"btn btn-info" %>
+        <% end %>
+      </div>
+    <% end %>  
+  </div>
+    
+  　
 </div>

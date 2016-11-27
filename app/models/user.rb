@@ -6,7 +6,14 @@ class User < ActiveRecord::Base
 
   has_many :pictures
   mount_uploader :avatar, ImageUploader
-#  def update_with_password()
+  def update_with_password(params, *options)
+    if provider.blank?
+      super
+    else
+      params.delete :current_password
+      update_without_password(params, *options)
+    end
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
@@ -27,9 +34,7 @@ class User < ActiveRecord::Base
   end
   
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
-    user = User.find_by(email: auth.info.email)
-    binding.pry
-#    user = User.where(provider: auth.provider, uid: auth.uid).first
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
     
     unless user
       user = User.new(
