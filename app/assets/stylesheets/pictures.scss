@@ -170,9 +170,11 @@ nav {
       float: left;
     }
     &image{
-      height: 150px;
-      width: 200px;
       text-align: left;
+      img {
+        height: 150px;
+        width: 200px;
+      } 
     }
 }
 
